@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Header from "../Header";
+import NavSidebar from "../NavSidebar";
 import s from "./Layout.module.scss";
 
 interface Props {
@@ -8,8 +9,9 @@ interface Props {
 }
 export const Layout: FC<Props> = ({ className = "", children }) => {
   return (
-    <div className={`${className}`}>
+    <div className={`${s.container} ${className}`}>
       <Header />
+      <NavSidebar />
       <main className={s.content}>{children}</main>
     </div>
   );

@@ -1,4 +1,4 @@
-import { ConnectWallet } from "@app/components/common";
+import { ConnectWallet, UserNotification } from "@app/components/common";
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import s from "./Header.module.scss";
@@ -12,6 +12,7 @@ const Header: FC = () => {
         </NavLink>
       </div>
       <div className={s.rightCol}>
+        <UserNotification />
         <ConnectWallet />
       </div>
     </div>

@@ -9,6 +9,9 @@
 
 .profile {
   opacity: 1 !important;
+  display: flex;
+  align-items: center;
+
   span {
     color: #fff !important;
     font-size: 1rem;
@@ -18,5 +21,6 @@
     height: 2rem;
     border-radius: 50%;
     object-fit: cover;
+    margin-left: 0.6rem;
   }
 }

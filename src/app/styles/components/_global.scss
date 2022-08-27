@@ -14,10 +14,14 @@ body {
   //   color: $gray;
   // color: #fff;
   background: #000;
+  color: #fff;
 
   &:not(.page-loaded) {
     // overflow: hidden;
   }
+}
+body {
+  overflow-x: hidden;
 }
 
 img {

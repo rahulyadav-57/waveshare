@@ -8,6 +8,10 @@
   background: $color-gray;
   backdrop-filter: blur(4px);
   // transform: rotate(90deg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   .brand {
   }
   .rightCol {

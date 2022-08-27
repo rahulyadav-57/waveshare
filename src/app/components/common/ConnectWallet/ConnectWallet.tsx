@@ -5,6 +5,7 @@ import { FC, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import s from "./ConnectWallet.module.scss";
 import { UserOutlined } from "@ant-design/icons";
+import { transformImage } from "@app/utils/misc";
 
 const ConnectWallet: FC = () => {
   const [isLoaded, setIsloaded] = useState(false);
@@ -74,8 +75,13 @@ const ConnectWallet: FC = () => {
       )}
       {userAuth && (
         <Button className={`${s.profile} theme-btn-primary`}>
-          <UserOutlined />
+          {/* <UserOutlined /> */}
           Hello, {userAuth.name?.split(" ")[0]}
+          <img
+            className={s.icon}
+            src={transformImage(userAuth.picture!!)}
+            alt=""
+          />
         </Button>
       )}
     </>
