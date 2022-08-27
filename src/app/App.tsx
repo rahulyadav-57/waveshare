@@ -5,6 +5,8 @@ import { RecoilRoot } from "recoil";
 // import "swiper/swiper.scss";
 // import "./styles/app.scss";
 
+import "./styles/theme.scss";
+
 // ApplyInterceptor();
 const App: FC = () => {
   return (

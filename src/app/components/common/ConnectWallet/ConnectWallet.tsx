@@ -1,12 +1,14 @@
 import { AuthService } from "@app/Services";
 import { useUserActions } from "@app/_actions/user.actions";
 import { authAtom } from "@app/_state";
+import { Button } from "antd";
 import { FC, useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import s from "./ConnectWallet.module.scss";
 
 const ConnectWallet: FC = () => {
   const [isLoaded, setIsloaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // const userActions = useUserActions();
 
@@ -18,15 +20,15 @@ const ConnectWallet: FC = () => {
   };
 
   const connectWallet = async () => {
+    setIsLoading(true);
     await AuthService.requestSocialLogin("google");
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    console.log("isLoaded", isLoaded);
     if (!isLoaded) {
       return;
     }
-    console.log("isLoaded 2", isLoaded, userAuth);
 
     (async () => {
       if (!userAuth?.id) {
@@ -52,15 +54,18 @@ const ConnectWallet: FC = () => {
 
   return (
     <>
-      {isLoaded && (
-        <div
+      {isLoaded && !userAuth && (
+        <Button
           className={s.connectWallet}
+          loading={isLoading}
           onClick={() => {
             connectWallet();
           }}
+          type="primary"
+          // icon={<SearchOutlined />}
         >
           Connect Wallet
-        </div>
+        </Button>
       )}
       {userAuth && userAuth.name}
     </>
