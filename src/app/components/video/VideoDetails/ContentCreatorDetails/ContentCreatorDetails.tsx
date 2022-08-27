@@ -1,4 +1,6 @@
+import { Button } from "antd";
 import { FC } from "react";
+import RecentUploads from "../../RecentUploads";
 import s from "./ContentCreatorDetails.module.scss";
 
 const ContentCreatorDetails: FC = () => {
@@ -21,6 +23,17 @@ const ContentCreatorDetails: FC = () => {
             <span className={s.subscriber}>1 Million Wavers</span>
           </div>
         </div>
+        <div className={s.actions}>
+          <Button className={`${s.subscribe} theme-btn-primary`}>
+            Subscribe
+          </Button>
+          <Button className={`${s.mintMembership} theme-btn-primary`}>
+            Membership
+          </Button>
+        </div>
+      </div>
+      <div className={s.similarContent}>
+        <RecentUploads heading="More like this" />
       </div>
     </div>
   );

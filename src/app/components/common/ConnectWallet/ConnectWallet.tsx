@@ -4,7 +4,6 @@ import { Button } from "antd";
 import { FC, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import s from "./ConnectWallet.module.scss";
-import { UserOutlined } from "@ant-design/icons";
 import { transformImage } from "@app/utils/misc";
 
 const ConnectWallet: FC = () => {

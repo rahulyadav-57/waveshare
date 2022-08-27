@@ -1,25 +1,56 @@
 .container {
   .banner {
-    height: 300px;
+    height: 200px;
     width: 100%;
     object-fit: cover;
   }
   .details {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     .profile {
       display: flex;
       .profileImage {
-        width: 4rem;
+        width: 5rem;
         border-radius: 50%;
+        margin-right: 0.5rem;
+        transform: translateY(-2rem);
       }
       .userWrapper {
+        display: flex;
+        flex-direction: column;
         .user {
           font-size: 1.2rem;
           font-weight: 700;
           .subscriber {
             font-weight: 300;
+            font-size: 0.9rem;
           }
         }
       }
     }
+    .actions {
+      .subscribe {
+        background: #fff !important;
+        padding: 0.5rem 3rem;
+        span {
+          color: #000 !important;
+        }
+      }
+      .mintMembership {
+        span {
+          color: #fff !important;
+        }
+      }
+    }
+    .mintMembership {
+      margin-left: 1rem;
+      padding: 0.5rem 3rem;
+    }
+  }
+  .similarContent {
+    margin-top: 4rem;
   }
 }
