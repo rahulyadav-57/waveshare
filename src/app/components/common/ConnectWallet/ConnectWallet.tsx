@@ -8,7 +8,7 @@ import s from "./ConnectWallet.module.scss";
 
 const ConnectWallet: FC = () => {
   const [isLoaded, setIsloaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // const userActions = useUserActions();
 
