@@ -1,6 +1,6 @@
 import AppRouter from "./AppRouter";
 import { FC } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 // import "swiper/swiper.scss";
 // import "./styles/app.scss";
@@ -12,14 +12,14 @@ const App: FC = () => {
   return (
     <>
       <RecoilRoot>
-        <BrowserRouter>
+        <HashRouter>
           <>
             <div className="app-container">
               <AppRouter />
             </div>
           </>
           {/* <RouteChangeTracker /> */}
-        </BrowserRouter>
+        </HashRouter>
       </RecoilRoot>
     </>
   );
