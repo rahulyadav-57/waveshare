@@ -2,46 +2,50 @@ import { AppConfig } from "@app/config";
 import { AppMode, AuthProvider, computeAddress } from "@arcana/auth";
 
 function createAuthService() {
-  let auth = new AuthProvider(AppConfig.ARCANA.APP_ID!!);
+  const arcanaAuth = new AuthProvider(AppConfig.ARCANA.APP_ID!!);
 
   async function getAuth() {
-    return auth;
+    return arcanaAuth;
   }
 
   async function init() {
-    await auth.init({
+    await arcanaAuth.init({
       appMode: AppMode.Full,
       position: "right",
     });
   }
 
   async function isLoggedIn() {
-    return await auth.isLoggedIn();
+    return await arcanaAuth.isLoggedIn();
   }
 
   async function logout() {
-    await auth.logout();
+    await arcanaAuth.logout();
   }
 
   async function requestPublicKey(email: string) {
-    return await auth.getPublicKey(email);
+    return await arcanaAuth.getPublicKey(email);
   }
 
   async function requestSocialLogin(type: string) {
-    await auth.loginWithSocial(type);
+    await arcanaAuth.loginWithSocial(type);
   }
 
   async function requestUserInfo() {
-    return await auth.getUser();
+    let data: any = await arcanaAuth.getUser();
+    if (data) {
+      data = JSON.parse(data);
+    }
+    return data;
   }
 
   async function requestWalletInfo() {
-    const provider = auth.provider;
+    const provider = arcanaAuth.provider;
     return await provider.request({ method: "eth_accounts" });
   }
 
   function setHook(event: any, handler: any) {
-    const provider = auth.provider;
+    const provider = arcanaAuth.provider;
     provider.on(event, handler);
   }
 

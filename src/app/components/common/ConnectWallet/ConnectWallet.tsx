@@ -1,10 +1,16 @@
 import { AuthService } from "@app/Services";
+import { useUserActions } from "@app/_actions/user.actions";
+import { authAtom } from "@app/_state";
 import { FC, useEffect, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import s from "./ConnectWallet.module.scss";
 
 const ConnectWallet: FC = () => {
-  const [user, setUser] = useState({ loggedIn: false });
   const [isLoaded, setIsloaded] = useState(false);
+
+  // const userActions = useUserActions();
+
+  const [userAuth, setUserAuth] = useRecoilState(authAtom);
 
   const authInit = async () => {
     await AuthService.init();
@@ -16,13 +22,29 @@ const ConnectWallet: FC = () => {
   };
 
   useEffect(() => {
+    console.log("isLoaded", isLoaded);
     if (!isLoaded) {
       return;
     }
+    console.log("isLoaded 2", isLoaded, userAuth);
+
     (async () => {
-      console.log(await AuthService.requestUserInfo());
+      if (!userAuth?.id) {
+        let user = await AuthService.requestUserInfo();
+
+        setUserAuth((oldValue: any) => {
+          return {
+            ...oldValue,
+            ...user,
+          };
+        });
+      }
     })();
   }, [isLoaded]);
+
+  useEffect(() => {
+    // console.log(userAuth, "userAuth");
+  }, [userAuth]);
 
   useEffect(() => {
     authInit();
@@ -40,6 +62,7 @@ const ConnectWallet: FC = () => {
           Connect Wallet
         </div>
       )}
+      {userAuth && userAuth.name}
     </>
   );
 };

@@ -1,6 +1,7 @@
 import AppRouter from "./AppRouter";
 import { FC } from "react";
 import { BrowserRouter } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 // import "swiper/swiper.scss";
 // import "./styles/app.scss";
 
@@ -8,14 +9,16 @@ import { BrowserRouter } from "react-router-dom";
 const App: FC = () => {
   return (
     <>
-      <BrowserRouter>
-        <>
-          <div className="app-container">
-            <AppRouter />
-          </div>
-        </>
-        {/* <RouteChangeTracker /> */}
-      </BrowserRouter>
+      <RecoilRoot>
+        <BrowserRouter>
+          <>
+            <div className="app-container">
+              <AppRouter />
+            </div>
+          </>
+          {/* <RouteChangeTracker /> */}
+        </BrowserRouter>
+      </RecoilRoot>
     </>
   );
 };
