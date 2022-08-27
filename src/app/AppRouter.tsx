@@ -1,14 +1,14 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./pages";
+import { Home, VideoDetailsPage } from "./pages";
 
 export default function AppRouter() {
   const LoadingMessage = () => <div>Loading..,</div>;
 
   const routerComponentMapper = [
     {
-      path: "/home",
-      component: Home,
+      path: "/details",
+      component: VideoDetailsPage,
     },
   ];
 
@@ -17,11 +17,13 @@ export default function AppRouter() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        {/* {routerComponentMapper.map((SingleRoute, index) => (
-          <Route path={SingleRoute.path} key={index}>
-            <SingleRoute.component />
-          </Route>
-        ))} */}
+        {routerComponentMapper.map((SingleRoute, index) => (
+          <Route
+            path={SingleRoute.path}
+            key={index}
+            element={<SingleRoute.component />}
+          />
+        ))}
       </Routes>
     </Suspense>
   );
