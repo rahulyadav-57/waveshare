@@ -10,7 +10,7 @@ function createAuthService() {
 
   async function init() {
     await arcanaAuth.init({
-      appMode: AppMode.Full,
+      appMode: AppMode.NoUI,
       position: "right",
     });
   }

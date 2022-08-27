@@ -1,0 +1,18 @@
+@import "/src/app/styles/variables.scss";
+
+.container {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $color-gray;
+  backdrop-filter: blur(4px);
+  // transform: rotate(90deg);
+  .brand {
+  }
+  .rightCol {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}

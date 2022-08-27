@@ -1,10 +1,10 @@
 import { AuthService } from "@app/Services";
-import { useUserActions } from "@app/_actions/user.actions";
 import { authAtom } from "@app/_state";
 import { Button } from "antd";
 import { FC, useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import s from "./ConnectWallet.module.scss";
+import { UserOutlined } from "@ant-design/icons";
 
 const ConnectWallet: FC = () => {
   const [isLoaded, setIsloaded] = useState(false);
@@ -17,6 +17,7 @@ const ConnectWallet: FC = () => {
   const authInit = async () => {
     await AuthService.init();
     setIsloaded(true);
+    setIsLoading(false);
   };
 
   const connectWallet = async () => {
@@ -52,22 +53,31 @@ const ConnectWallet: FC = () => {
     authInit();
   }, []);
 
+  const WalletIcon = () => (
+    <img className={s.walletIcon} src="/assets/images/icon/wallet.svg" alt="" />
+  );
+
   return (
     <>
       {isLoaded && !userAuth && (
         <Button
-          className={s.connectWallet}
+          className={`${s.connectWallet} theme-btn-primary`}
           loading={isLoading}
           onClick={() => {
             connectWallet();
           }}
           type="primary"
-          // icon={<SearchOutlined />}
+          icon={WalletIcon()}
         >
           Connect Wallet
         </Button>
       )}
-      {userAuth && userAuth.name}
+      {userAuth && (
+        <Button className={`${s.profile} theme-btn-primary`}>
+          <UserOutlined />
+          Hello, {userAuth.name?.split(" ")[0]}
+        </Button>
+      )}
     </>
   );
 };
