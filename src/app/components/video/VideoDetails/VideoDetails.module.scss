@@ -1,0 +1,22 @@
+.container {
+  .info {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    .content {
+      flex: 0 0 60%;
+      .title {
+        font-size: 1.5625rem;
+        font-weight: 600;
+      }
+    }
+  }
+  .wave {
+    // display: flex;
+    // align-items: center;
+    img {
+      width: 2rem;
+    }
+  }
+}

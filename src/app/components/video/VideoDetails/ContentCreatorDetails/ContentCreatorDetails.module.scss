@@ -1,0 +1,25 @@
+.container {
+  .banner {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+  .details {
+    .profile {
+      display: flex;
+      .profileImage {
+        width: 4rem;
+        border-radius: 50%;
+      }
+      .userWrapper {
+        .user {
+          font-size: 1.2rem;
+          font-weight: 700;
+          .subscriber {
+            font-weight: 300;
+          }
+        }
+      }
+    }
+  }
+}
