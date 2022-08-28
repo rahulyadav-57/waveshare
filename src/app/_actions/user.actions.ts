@@ -15,6 +15,7 @@ function useUserActions() {
     listVideo,
     getListedVideos,
     videoDetails,
+    getMyListedVideos,
   };
 
   function updateAuth(value: any) {
@@ -31,6 +32,9 @@ function useUserActions() {
   }
   function getListedVideos() {
     return fetchWrapper.get(`items/UserUpload`);
+  }
+  function getMyListedVideos(user: string) {
+    return fetchWrapper.get(`items/UserUpload?filter[uploaded_by]=${user}`);
   }
 
   function logout() {

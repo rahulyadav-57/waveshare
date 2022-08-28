@@ -14,7 +14,7 @@ const VideoCard: FC<Props> = ({ className, data }) => {
         <div className={s.thumbnailWrapper}>
           <img src={`https://ipfs.io/ipfs/${data.thumbnail_id}`} alt="" />
         </div>
-        <span className={s.title}>Top 10 Upcoming Web3 Startups In India</span>
+        <span className={s.title}>{data.title}</span>
       </NavLink>
     </div>
   );

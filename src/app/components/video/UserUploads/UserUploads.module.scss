@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.videoContent {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -1rem;
+  .card {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 1rem;
+  }
+}

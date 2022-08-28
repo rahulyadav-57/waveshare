@@ -7,6 +7,8 @@ import { UploadOutlined, PictureOutlined } from "@ant-design/icons";
 import { Web3Storage } from "web3.storage";
 import { AppConfig } from "@app/config";
 import { useUserActions } from "@app/_actions/user.actions";
+import { useRecoilState } from "recoil";
+import { authAtom } from "@app/_state";
 
 // import ReactPlayer from "react-player";
 
@@ -16,6 +18,7 @@ const UploadVideoComp: FC = () => {
   const [videoCid, setVideoCid] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const userActions = useUserActions();
+  const [userAuth, setUserAuth] = useRecoilState(authAtom);
 
   useEffect(() => {
     const client: any = new Web3Storage({
@@ -27,12 +30,14 @@ const UploadVideoComp: FC = () => {
   const onFinish = async (values: any) => {
     if (!thumbnailCid || !videoCid) {
       notification.error({ message: "Upload files" });
+      return;
     }
     setIsLoading(true);
     const data = {
       ...values,
       video_id: videoCid,
       thumbnail_id: thumbnailCid,
+      uploaded_by: userAuth?.email || "",
     };
     try {
       await userActions.listVideo(data);
