@@ -11,7 +11,7 @@ export default function AppRouter() {
       component: VideoDetailsPage,
     },
     {
-      path: "/upload-video/:id",
+      path: "/upload-video",
       component: UploadVideoPage,
     },
   ];
