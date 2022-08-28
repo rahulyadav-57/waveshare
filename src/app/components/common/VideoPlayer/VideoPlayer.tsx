@@ -5,9 +5,10 @@ import { PlayCircleOutlined, PauseCircleOutlined } from "@ant-design/icons";
 
 interface Props {
   src: string;
+  thumbnail: string;
 }
 
-const VideoPlayer: FC<Props> = ({ src = "" }) => {
+const VideoPlayer: FC<Props> = ({ src = "", thumbnail = "" }) => {
   const videoRef = useRef(null);
 
   const [playing, setPlaying] = useState(false);
@@ -37,7 +38,7 @@ const VideoPlayer: FC<Props> = ({ src = "" }) => {
         <video
           ref={videoRef}
           className="video"
-          poster="/assets/images/layout/card.jpg"
+          poster={thumbnail}
           src={src}
           controls={playing}
         />

@@ -7,7 +7,7 @@ export default function AppRouter() {
 
   const routerComponentMapper = [
     {
-      path: "/details",
+      path: "/details/:id",
       component: VideoDetailsPage,
     },
     {

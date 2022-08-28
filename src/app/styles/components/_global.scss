@@ -37,3 +37,8 @@ a {
 .r-10 {
   border-radius: 10px;
 }
+
+#root {
+  position: relative;
+  z-index: 0;
+}

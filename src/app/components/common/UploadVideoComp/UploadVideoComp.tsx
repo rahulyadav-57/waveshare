@@ -1,10 +1,12 @@
 import { FC, useState, useEffect } from "react";
 import s from "./UploadVideoComp.module.scss";
-import { Button, Form, Input, Radio } from "antd";
+import { Button, Form, Input, notification, Radio } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import FileUpload from "../FileUpload";
 import { UploadOutlined, PictureOutlined } from "@ant-design/icons";
 import { Web3Storage } from "web3.storage";
+import { AppConfig } from "@app/config";
+import { useUserActions } from "@app/_actions/user.actions";
 
 // import ReactPlayer from "react-player";
 
@@ -12,16 +14,34 @@ const UploadVideoComp: FC = () => {
   const [storageClient, setStorageClient] = useState<any>(undefined);
   const [thumbnailCid, setThumbnailCid] = useState<string>("");
   const [videoCid, setVideoCid] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
+  const userActions = useUserActions();
 
   useEffect(() => {
     const client: any = new Web3Storage({
-      token: process.env.REACT_APP_WEB3_STORAGE_API_KEY as string,
+      token: AppConfig.WEB3_STORAGE_API_KEY!!,
     });
     setStorageClient(client);
   }, []);
 
-  const onFinish = (values: any) => {
-    console.log("Success:", values, videoCid, thumbnailCid);
+  const onFinish = async (values: any) => {
+    if (!thumbnailCid || !videoCid) {
+      notification.error({ message: "Upload files" });
+    }
+    setIsLoading(true);
+    const data = {
+      ...values,
+      video_id: videoCid,
+      thumbnail_id: thumbnailCid,
+    };
+    try {
+      await userActions.listVideo(data);
+      notification.success({ message: "Video listed" });
+    } catch (error) {
+      notification.error({ message: "Something went wrong" });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -29,20 +49,24 @@ const UploadVideoComp: FC = () => {
   };
 
   const handleThumbnailUpload = async ({ target }: any) => {
+    notification.warning({ message: "Uploading..." });
     if (storageClient) {
       const cid = await storageClient.put(target.files, {
         wrapWithDirectory: false,
       });
       setThumbnailCid(cid);
+      notification.success({ message: "Thumbnail uploaded" });
     }
   };
 
   const handleVideoUpload = async ({ target }: any) => {
+    notification.warning({ message: "Uploading..." });
     if (storageClient) {
       const cid = await storageClient.put(target.files, {
         wrapWithDirectory: false,
       });
       setVideoCid(cid);
+      notification.success({ message: "Video uploaded" });
     }
   };
 
@@ -152,7 +176,7 @@ const UploadVideoComp: FC = () => {
             </div>
 
             <Form.Item>
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit" loading={isLoading}>
                 Submit
               </Button>
             </Form.Item>

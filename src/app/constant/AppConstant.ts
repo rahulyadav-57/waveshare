@@ -13,7 +13,7 @@ export const AppConstant = {
     {
       icon: "/assets/images/icon/subscription.svg",
       label: "Subscription",
-      url: "/",
+      url: "/upload-video",
       isPrivate: true,
     },
   ],

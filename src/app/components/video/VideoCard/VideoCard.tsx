@@ -4,14 +4,15 @@ import s from "./VideoCard.module.scss";
 
 interface Props {
   className?: string;
+  data: any;
 }
 
-const VideoCard: FC<Props> = ({ className }) => {
+const VideoCard: FC<Props> = ({ className, data }) => {
   return (
     <div className={`${s.container} ${className}`}>
-      <NavLink to="/details">
+      <NavLink to={`/details/${data.id}`}>
         <div className={s.thumbnailWrapper}>
-          <img src="/assets/images/layout/card.jpg" alt="" />
+          <img src={`https://ipfs.io/ipfs/${data.thumbnail_id}`} alt="" />
         </div>
         <span className={s.title}>Top 10 Upcoming Web3 Startups In India</span>
       </NavLink>

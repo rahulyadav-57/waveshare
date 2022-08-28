@@ -9,10 +9,12 @@ function useUserActions() {
   // const baseUrl = `${AppConfig.API_URL}/users`;
   const fetchWrapper = useFetchWrapper();
   const [auth, setAuth] = useRecoilState(authAtom);
-  console.log("hiii");
   return {
     logout,
     updateAuth,
+    listVideo,
+    getListedVideos,
+    videoDetails,
   };
 
   function updateAuth(value: any) {
@@ -20,6 +22,17 @@ function useUserActions() {
       return { ...currentData, ...value };
     });
   }
+
+  function listVideo(data: any) {
+    return fetchWrapper.post(`items/UserUpload`, data);
+  }
+  function videoDetails(id: string) {
+    return fetchWrapper.get(`items/UserUpload/${id}`);
+  }
+  function getListedVideos() {
+    return fetchWrapper.get(`items/UserUpload`);
+  }
+
   function logout() {
     // remove user from local storage, set auth state to null and redirect to login page
     localStorage.removeItem("user");

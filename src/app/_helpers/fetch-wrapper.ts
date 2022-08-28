@@ -54,7 +54,7 @@ function useFetchWrapper() {
     // return auth header with jwt if user if logged in and request is set to api url
     const token = auth?.token;
     const isLoggedIn = !!token;
-    const isApiUrl = url.startsWith(AppConfig.API_URL);
+    const isApiUrl = url.startsWith(AppConfig.API_URL!!);
 
     if (isLoggedIn && isApiUrl) {
       return { Authorization: `Bearer ${token}` };
