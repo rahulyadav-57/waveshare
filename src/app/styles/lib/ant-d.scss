@@ -1,1 +1,95 @@
 @import "~antd/dist/antd.css";
+
+.ant-col {
+  label {
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+
+.ant-input {
+  background-color: #16191d !important;
+  height: 45px;
+  border: 0px;
+  border-radius: 10px;
+}
+
+.ant-form-item-control-input-content {
+  input {
+    background: #16191d !important;
+    background-color: #16191d !important;
+    border: 0px;
+  }
+}
+
+.textarea.ant-input {
+  border: 0px;
+}
+
+input {
+  background: #16191d !important;
+  background-color: #16191d !important;
+}
+
+.ant-input-affix-wrapper {
+  background-color: #16191d !important;
+  background: #16191d !important;
+  border: 0px;
+}
+
+.ant-radio-group {
+  width: 100%;
+  display: flex;
+  label {
+    background-color: #16191d !important;
+    border-radius: 10px;
+    margin-right: 15px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 198px;
+    border: 0px !important;
+    border-radius: 10px !important;
+    font-size: 16px;
+    font-weight: 100;
+  }
+}
+
+.ant-radio-button-wrapper:not(:first-child)::before {
+  display: none;
+}
+
+.ant-radio-button-wrapper-checked {
+  border: 0px !important;
+}
+
+.ant-radio-button-checked {
+  background: linear-gradient(
+    180deg,
+    #589cfe 0%,
+    #5967ff 99.99%,
+    rgba(22, 25, 29, 0) 100%
+  );
+  color: #fff !important;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  color: #fff !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.ant-btn.ant-btn-primary {
+  background: linear-gradient(184.67deg, #589cfe 0%, #5967ff 100%);
+  border-radius: 100px;
+}
+
+.uploadVideoForm {
+  .ant-btn.ant-btn-primary {
+    width: 180px;
+    height: 52px;
+    margin-top: 1rem;
+  }
+}
