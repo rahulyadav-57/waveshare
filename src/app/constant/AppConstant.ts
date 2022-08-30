@@ -16,5 +16,11 @@ export const AppConstant = {
       url: "/user-video",
       isPrivate: true,
     },
+    {
+      icon: "/assets/images/icon/subscription.svg",
+      label: "Membership",
+      url: "/membership",
+      isPrivate: true,
+    },
   ],
 };

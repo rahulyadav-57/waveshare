@@ -12,7 +12,7 @@ const Header: FC = () => {
         </NavLink>
       </div>
       <div className={s.rightCol}>
-        <UserNotification />
+        {/* <UserNotification /> */}
         <ConnectWallet />
       </div>
     </div>

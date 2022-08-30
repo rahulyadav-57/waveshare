@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Home, UploadVideoPage, VideoDetailsPage } from "./pages";
 import MyVideoDetailsPage from "./pages/MyVideoDetailsPage";
+import MembershipPage from "./pages/MembershipPage";
 
 export default function AppRouter() {
   const LoadingMessage = () => <div>Loading..,</div>;
@@ -18,6 +19,10 @@ export default function AppRouter() {
     {
       path: "/upload-video",
       component: UploadVideoPage,
+    },
+    {
+      path: "/membership",
+      component: MembershipPage,
     },
   ];
 
